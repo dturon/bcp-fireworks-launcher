@@ -1,6 +1,6 @@
 <a href="https://www.bigclown.com"><img src="https://s3.eu-central-1.amazonaws.com/bigclown/gh-readme-logo.png" alt="BigClown Logo" align="right"></a>
 
-# BigClown bcp-fireworks-launcher
+# Project Fireworks Launcher
 
 [![Travis](https://img.shields.io/travis/bigclownlabs/bcp-fireworks-launcher/master.svg)](https://travis-ci.org/bigclownlabs/bcp-fireworks-launcher)
 [![Release](https://img.shields.io/github/release/bigclownlabs/bcp-fireworks-launcher.svg)](https://github.com/bigclownlabs/bcp-fireworks-launcher/releases)
@@ -9,6 +9,8 @@
 
 
 This repository contains firmware for [Fireworks Launcher Set](https://shop.bigclown.com/products/fireworks-launcher-set).
+
+[![video](https://img.youtube.com/vi/kwgfSJDdBJE/0.jpg)](https://www.youtube.com/watch?v=kwgfSJDdBJE)
 
 ## Build
 
