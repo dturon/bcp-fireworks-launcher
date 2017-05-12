@@ -15,7 +15,7 @@ This repository contains firmware for [Fireworks Launcher Set](https://shop.bigc
 * Clone repository
 
     ```
-    clone --recursive https://github.com/bigclownlabs/bcp-fireworks-launcher
+    git clone --recursive https://github.com/bigclownlabs/bcp-fireworks-launcher
     ```
 
 * Move to folder
