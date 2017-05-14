@@ -134,7 +134,7 @@ void bc_radio_on_buffer(uint64_t *peer_device_address, uint8_t *buffer, size_t *
 
     if (buffer[1] == 0x00)
     {
-        bc_module_relay_set_state(&relay_0_0, state);
+        bc_module_power_relay_set_state(state);
         uint8_t buffer[] = {0x3C, 0x00, state};
         bc_radio_pub_buffer(buffer, sizeof(buffer));
     }
