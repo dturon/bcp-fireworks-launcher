@@ -17,6 +17,8 @@ static void barometer_tag_event_handler(bc_tag_barometer_t *self, bc_tag_baromet
 
 void application_init(void)
 {
+    bc_module_power_init();
+
     bc_led_init(&led, BC_GPIO_LED, false, false);
 
     static bc_button_t button;
