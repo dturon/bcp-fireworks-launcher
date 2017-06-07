@@ -28,11 +28,11 @@
         },
         {
             "taskName": "dfu-base",
-            "args": ["dfu"]
+            "args": ["dfu-base"]
         },
         {
             "taskName": "dfu-remote",
-            "args": ["dfu"]
+            "args": ["dfu-remote"]
         },
         {
             "taskName": "ozone",
