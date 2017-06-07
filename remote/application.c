@@ -1,5 +1,4 @@
 #include <application.h>
-#include <bc_scheduler.h>
 
 #define UPDATE_INTERVAL 5000
 
@@ -33,6 +32,8 @@ void application_init(void)
 
     bc_module_relay_set_state(&relay_0_0, BC_MODULE_RELAY_STATE_FALSE);
     bc_module_relay_set_state(&relay_0_1, BC_MODULE_RELAY_STATE_FALSE);
+
+    bc_module_power_init();
 
     static bc_tag_temperature_t temperature_tag_0_48;
     bc_tag_temperature_init(&temperature_tag_0_48, BC_I2C_I2C0, BC_TAG_TEMPERATURE_I2C_ADDRESS_DEFAULT);
@@ -142,6 +143,12 @@ void bc_radio_on_buffer(uint64_t *peer_device_address, uint8_t *buffer, size_t *
     {
         bc_module_relay_set_state(&relay_0_1, state);
         uint8_t buffer[] = {0x3C, 0x01, state};
+        bc_radio_pub_buffer(buffer, sizeof(buffer));
+    }
+    else if (buffer[1] == 0x02)
+    {
+        bc_module_power_relay_set_state(state);
+        uint8_t buffer[] = {0x3C, 0x02, state};
         bc_radio_pub_buffer(buffer, sizeof(buffer));
     }
 }
