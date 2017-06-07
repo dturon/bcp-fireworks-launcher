@@ -12,6 +12,39 @@ This repository contains firmware for [Fireworks Launcher Set](https://shop.bigc
 
 [![video](https://img.youtube.com/vi/kwgfSJDdBJE/0.jpg)](https://www.youtube.com/watch?v=kwgfSJDdBJE)
 
+## Firmware Programming
+```
+dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware-base.bin
+```
+```
+dfu-util -s 0x08000000:leave -d 0483:df11 -a 0 -D firmware-remote.bin
+```
+
+More information about dfu [here](https://doc.bigclown.com/core-module-flashing.html)
+
+## MQTT
+
+### Relay on Power module
+* On
+    ```
+    mosquitto_pub -t 'node/fireworks-launcher-remote/relay/-/state/set' -m true
+    ```
+* Off
+    ```
+    mosquitto_pub -t 'node/fireworks-launcher-remote/relay/-/state/set' -m false
+    ```
+### Relay module
+* On
+    ```
+    mosquitto_pub -t 'node/fireworks-launcher-remote/relay/0:0/state/set' -m true
+    mosquitto_pub -t 'node/fireworks-launcher-remote/relay/0:1/state/set' -m true
+    ```
+* Off
+    ```
+    mosquitto_pub -t 'node/fireworks-launcher-remote/relay/0:0/state/set' -m false
+    mosquitto_pub -t 'node/fireworks-launcher-remote/relay/0:1/state/set' -m false
+    ```
+
 ## Build
 
 * Clone repository
