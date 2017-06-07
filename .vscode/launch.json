@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "base",
+            // "preLaunchTask": "build",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "",
+            "cwd": "${workspaceRoot}",
+            "MIMode": "gdb",
+            "miDebuggerServerAddress": "localhost:2331",
+            "logging": {
+//                "engineLogging": true
+            },
+            "windows": {
+                "program": "${workspaceRoot}\\out\\debug\\firmware-base.elf",
+                "miDebuggerPath": "${env:SystemDrive}\\BigClown\\usr\\bin\\arm-none-eabi-gdb.exe",
+                "debugServerPath": "${env:SystemDrive}\\BigClown\\usr\\bin\\bcg.cmd",
+                "debugServerArgs": "${workspaceRoot}",
+                "serverStarted": "Connected to target",
+                "serverLaunchTimeout": 5000
+            },
+            "linux": {
+                "program": "${workspaceRoot}/out/debug/firmware-base.elf",
+                "miDebuggerPath": "arm-none-eabi-gdb",
+                "debugServerPath": "${workspaceRoot}/.vscode/debug.sh",
+                "debugServerArgs": "${workspaceRoot}/out/debug/firmware-base.bin",
+                "serverStarted": "Connected to target",
+                "serverLaunchTimeout": 10000
+            }
+        },
+        {
+            "name": "remote",
+            // "preLaunchTask": "build",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "",
+            "cwd": "${workspaceRoot}",
+            "MIMode": "gdb",
+            "miDebuggerServerAddress": "localhost:2331",
+            "logging": {
+//                "engineLogging": true
+            },
+            "windows": {
+                "program": "${workspaceRoot}\\out\\debug\\firmware-remote.elf",
+                "miDebuggerPath": "${env:SystemDrive}\\BigClown\\usr\\bin\\arm-none-eabi-gdb.exe",
+                "debugServerPath": "${env:SystemDrive}\\BigClown\\usr\\bin\\bcg.cmd",
+                "debugServerArgs": "${workspaceRoot}",
+                "serverStarted": "Connected to target",
+                "serverLaunchTimeout": 5000
+            },
+            "linux": {
+                "program": "${workspaceRoot}/out/debug/firmware-remote.elf",
+                "miDebuggerPath": "arm-none-eabi-gdb",
+                "debugServerPath": "${workspaceRoot}/.vscode/debug.sh",
+                "debugServerArgs": "${workspaceRoot}/out/debug/firmware-remote.bin",
+                "serverStarted": "Connected to target",
+                "serverLaunchTimeout": 10000
+            }
+        }
+    ]
+}
