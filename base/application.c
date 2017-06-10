@@ -33,6 +33,8 @@ void application_init(void)
     usb_talk_sub(PREFIX_REMOTE "/relay/0:0/state/set", send_relay_state_set, &relay0_0);
     static uint8_t relay_0_1 = 0x01;
     usb_talk_sub(PREFIX_REMOTE "/relay/0:1/state/set", send_relay_state_set, &relay_0_1);
+    static uint8_t power_relay = 0x02;
+    usb_talk_sub(PREFIX_REMOTE "/relay/-/state/set", send_relay_state_set, &power_relay);
 
     enroll_to_gateway_task_id = bc_scheduler_register(enroll_to_gateway_task, NULL, BC_TICK_INFINITY);
 }
@@ -143,8 +145,16 @@ void bc_radio_on_buffer(uint64_t *peer_device_address, uint8_t *buffer, size_t *
     }
 
     uint8_t number = buffer[1];
-    bc_module_relay_state_t state = (bool)buffer[2] == true ? BC_MODULE_RELAY_STATE_TRUE : BC_MODULE_RELAY_STATE_FALSE;
 
-    usb_talk_publish_module_relay(PREFIX_REMOTE, &number, &state);
+    if (number == 0x02)
+    {
+        bool state = buffer[2];
+        usb_talk_publish_relay(PREFIX_REMOTE, &state);
+    }
+    else
+    {
+        bc_module_relay_state_t state = (bool)buffer[2] == true ? BC_MODULE_RELAY_STATE_TRUE : BC_MODULE_RELAY_STATE_FALSE;
+        usb_talk_publish_module_relay(PREFIX_REMOTE, &number, &state);
+    }
 }
 
