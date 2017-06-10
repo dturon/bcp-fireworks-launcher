@@ -124,16 +124,18 @@ void bc_radio_on_buffer(uint64_t *peer_device_address, uint8_t *buffer, size_t *
 {
     (void) peer_device_address;
 
+    bool state = buffer[2];
+    bc_module_power_relay_set_state(state);
     if (*length != 3)
     {
         return;
     }
+    
     if (buffer[0] != 0x3B)
     {
         return;
     }
 
-    bool state = buffer[2];
 
     if (buffer[1] == 0x00)
     {
